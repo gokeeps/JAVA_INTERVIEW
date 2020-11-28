@@ -4,4 +4,6 @@ public interface Operation {
     String processInfo(String message);
 
     void show();
+
+    void test();
 }

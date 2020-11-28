@@ -23,4 +23,8 @@ public class StaticInvocationHandler implements Operation {
     @Override public void show() {
         System.out.println("呵呵");
     }
+
+    @Override public void test() {
+
+    }
 }

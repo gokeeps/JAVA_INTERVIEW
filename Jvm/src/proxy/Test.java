@@ -34,6 +34,8 @@ public class Test {
 
         String processedRes = invocationOperation.processInfo("Hello");
         invocationOperation.show();
+
+        invocationOperation.toString();
         System.out.println("process res = " + processedRes);
     }
 
