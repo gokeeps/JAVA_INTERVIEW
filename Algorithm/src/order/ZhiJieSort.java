@@ -6,11 +6,11 @@ import java.util.Arrays;
  * 直接选择排序
  * 循环列表，每次选择最大的排序
  */
-public class ZhiJieOrder {
+public class ZhiJieSort {
 
     public static void main(String[] args) {
         int[] numbers = new int[]{1, 8, 7, 3, 2, 5, 6, 4, 9, 0, 8};
-        new ZhiJieOrder().zhiJiePaoAsc(numbers);
+        new ZhiJieSort().zhiJiePaoAsc(numbers);
         System.out.println(Arrays.toString(numbers));
      }
     public void zhiJiePaoAsc(int[] numbers) {

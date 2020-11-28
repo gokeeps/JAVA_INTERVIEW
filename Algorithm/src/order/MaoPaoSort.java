@@ -5,10 +5,10 @@ import java.util.Arrays;
 /**
  * 冒泡排序
  */
-public class MaoPaoOrder {
+public class MaoPaoSort {
     public static void main(String[] args) {
         int[] numbers = new int[] {1, 8, 7, 3, 2, 5, 6, 4, 9, 0};
-        new MaoPaoOrder().maoPaoAsc(numbers);
+        new MaoPaoSort().maoPaoAsc(numbers);
         System.out.println(Arrays.toString(numbers));
     }
 
