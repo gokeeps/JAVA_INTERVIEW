@@ -27,16 +27,14 @@ public class Test {
         // 被代理对象本身
         Operation operation = new PhoneOperation();
         // 交给一个代理对象
-        JDKInvocationHandler invocationHandler = new JDKInvocationHandler(operation);
+        JDKInvocationHandler invocationHandler = new JDKInvocationHandler(operation, 0);
         // 获取会产生一个新的实现实例（需要描述被代理对象的，类加载器，接口方法，代理对象）
-        Operation invocationOperation = (Operation)Proxy.newProxyInstance(operation.getClass().getClassLoader(),
-            operation.getClass().getInterfaces(), invocationHandler);
-
+        // invocationOperation只能是一个接口引用，而不是一个具体的实现
+//        Operation invocationOperation = (Operation)Proxy.newProxyInstance(operation.getClass().getClassLoader(),
+//            Operation.class.getInterfaces(), invocationHandler);
+        Operation invocationOperation = invocationHandler.createProxy();
         String processedRes = invocationOperation.processInfo("Hello");
         invocationOperation.show();
-
-        invocationOperation.toString();
-        System.out.println("process res = " + processedRes);
     }
 
     public static void testCgLibProxy() {

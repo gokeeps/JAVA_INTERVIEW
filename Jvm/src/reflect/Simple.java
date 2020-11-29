@@ -62,15 +62,15 @@ public class Simple {
 
 
 class User {
-    @Test(name1 = "888")
+
     private String name;
     private int age;
-    @Test(name1 = "111")
     public String nickName;
     protected String inters;
     String remark;
     private boolean status;
 
+    @Test(name1 = "888")
     public String getName() {
         return name;
     }
