@@ -1,14 +1,21 @@
 package proxy;
 
+import net.sf.cglib.core.DebuggingClassWriter;
+import net.sf.cglib.proxy.Enhancer;
+
 import java.lang.reflect.Proxy;
 
 public class Test {
     public static void main(String[] args) {
         // 保留代理生成的class文件
         System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
+        // 设置cglib代理类生成文件
+        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "E:\\workspace\\idea\\JAVA_INTERVIEW\\tmp");
         testStaticProxy();
         System.out.println("----------------------");
         testJDKProxy();
+        System.out.println("----------------------");
+        testCgLibProxy();
     }
 
 
@@ -38,10 +45,12 @@ public class Test {
     }
 
     public static void testCgLibProxy() {
-//        Enhancer
-
-
-
+        CgLibInvocationHandler invocationHandler = new CgLibInvocationHandler();
+        Enhancer enhancer = new Enhancer();
+        enhancer.setCallback(invocationHandler);
+        enhancer.setSuperclass(PhoneOperation.class);
+        PhoneOperation phoneOperation = (PhoneOperation)enhancer.create();
+        phoneOperation.show();
 
     }
 }
