@@ -17,11 +17,11 @@ import java.util.Set;
  * 　　notify(): 通知一个线程继续运行。
  * 　　setPriority(): 设置一个线程的优先级。
  */
-public class Thread1 extends Thread {
+public class ExtendsThread extends Thread {
 
     private int arg;
 
-    public Thread1(int arg) {
+    public ExtendsThread(int arg) {
         this.arg = arg;
     }
 
@@ -37,19 +37,18 @@ public class Thread1 extends Thread {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Thread t1 = new Thread1(1);
+        Thread t1 = new ExtendsThread(1);
         t1.start();
 //        t1.join();
-        Thread t2 = new Thread1(2);
+        Thread t2 = new ExtendsThread(2);
         t2.start();
 //        t2.join();
-        Thread t3 = new Thread1(3);
+        Thread t3 = new ExtendsThread(3);
         t3.start();
 //        t3.join();
 
         Set<String> a = new HashSet<>();
         a.add("aaa");
-        "".contains("ade")
         char b = 1;
         a.add(String.valueOf(b));
     }
