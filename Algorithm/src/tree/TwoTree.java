@@ -1,7 +1,10 @@
 package tree;
 
 public class TwoTree {
-    Tree tree = new Tree();
+
+    public static void main(String[] args) {
+
+    }
 }
 
 
