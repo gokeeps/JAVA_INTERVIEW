@@ -1,13 +1,10 @@
 package linked;
-
 public class OneLInked {
 
     /**
      * 必须保证head有元素
      */
     public Node head;
-
-    public int len;
 
     /**
      * 从头部插入
@@ -23,7 +20,6 @@ public class OneLInked {
             head = node;
             head.next = nextNode;
         }
-        len++;
     }
 
     public void insertForTail(int number) {
@@ -36,15 +32,35 @@ public class OneLInked {
                 nodeTmp = nodeTmp.next;
             }
             nodeTmp.next = node;
-            len++;
+        }
+    }
+
+    /**
+     * 创建一个新的单向链表
+     */
+    public void recoverForNew() {
+        // 读取的指针节点
+        Node nodeTmp = head;
+        OneLInked lInked = new OneLInked();
+        while (nodeTmp != null) {
+            lInked.insertForHead(nodeTmp.number);
+            nodeTmp = nodeTmp.next;
+        }
+        head = lInked.head;
+    }
+
+
+    public void recoverForAddress() {
+        // 这里是一个局部变量
+        Node nodeTmp = head;
+        head = null;
+        while (nodeTmp != null) {
+            nodeTmp = nodeTmp.next;
         }
     }
 
     public void deleteForIndex(int index) {
         if (head == null) {
-            return;
-        }
-        if (index > len - 1) {
             return;
         }
         int i = 0;
@@ -54,10 +70,8 @@ public class OneLInked {
             if (i == index) {
                 if (prevNode == null) {
                     head = null;
-                    len--;
                 } else {
                     prevNode.next = tempNode.next;
-                    len--;
                 }
                 break;
                 // 处理
@@ -80,9 +94,6 @@ public class OneLInked {
         if (head == null) {
             return null;
         }
-        if (index > len - 1) {
-            return null;
-        }
         int i = 0;
         Node tempNode = head;
         while (tempNode != null) {
@@ -98,7 +109,6 @@ public class OneLInked {
 
     public void clean() {
         head = null;
-        len = 0;
     }
 
     public void showNumbersForHead() {
@@ -115,7 +125,7 @@ public class OneLInked {
     }
 
     @Override public String toString() {
-        return "OneLInked{" + "head=" + head + ", len=" + len + '}';
+        return "OneLInked{" + "head=" + head + '}';
     }
 
     public static void main(String[] args) {
@@ -127,10 +137,8 @@ public class OneLInked {
         System.out.println(lInked.toString());
         lInked.showNumbersForHead();
         System.out.println("查找第n个元素: " + lInked.getNodeWithIndex(3));
-        System.out.println("单向链表长度: " + lInked.len);
         lInked.deleteForIndex(2);
         System.out.println("删除第n个元素: " + lInked.toString());
-        System.out.println(lInked.len);
         lInked.updateForIndex(2, 44);
         System.out.println(lInked.toString());
         lInked.clean();
@@ -139,6 +147,10 @@ public class OneLInked {
         lInked.insertForTail(3);
         lInked.insertForTail(2);
         lInked.insertForTail(1);
+        System.out.println(lInked.toString());
+        lInked.recoverForNew();
+        System.out.println(lInked.toString());
+        lInked.recoverForAddress();
         System.out.println(lInked.toString());
     }
 
