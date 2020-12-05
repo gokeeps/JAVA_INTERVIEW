@@ -16,9 +16,8 @@ public class OneLInked {
         if (head == null) {
             head = node;
         } else {
-            Node nextNode = head;
+            node.next = head;
             head = node;
-            head.next = nextNode;
         }
     }
 
