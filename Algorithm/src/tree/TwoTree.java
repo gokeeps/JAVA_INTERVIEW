@@ -1,8 +1,7 @@
 package tree;
+import queue.LinkedQueue;
 
-import com.sun.deploy.util.StringUtils;
-
-import java.util.Arrays;
+import java.util.Stack;
 
 public class TwoTree {
     public Tree root;
@@ -40,18 +39,42 @@ public class TwoTree {
         }
     }
 
+    /**
+     * 层级遍历
+     * @param tree
+     */
     public void rankSort(Tree tree){
-        if (tree == null) {
-            return;
+        LinkedQueue<Tree> treeLinkedQueue = new LinkedQueue<>();
+        treeLinkedQueue.insert(tree);
+        while (!treeLinkedQueue.isEmpty()) {
+            Tree queueTree = treeLinkedQueue.pop();
+            System.out.println(queueTree.value);
+            if (queueTree.left != null) {
+                treeLinkedQueue.insert(queueTree.left);
+            }
+            if (queueTree.right != null) {
+                treeLinkedQueue.insert(queueTree.right);
+            }
         }
-        if (tree.left != null) {
-            System.out.print(tree.left.value + " ");
+    }
+
+    public void reversSort (Tree tree) {
+        Stack<Tree> stack = new Stack<>();
+        stack.push(tree);
+        Tree tmpLeft = tree.left;
+        Tree tmpRight = tree.right;
+        while (tmpLeft != null || tmpRight != null) {
+            if (tmpRight != null) {
+                stack.push(tmpRight);
+                tmpRight = tmpRight.right;
+            }
+            if (tmpLeft != null) {
+                stack.push(tree.left);
+                tmpRight = tmpLeft.left;
+            }
         }
-        if (tree.right != null) {
-            System.out.print(tree.right.value + " ");
-        }
-        rankSort(tree.left);
-        rankSort(tree.right);
+        System.out.println();
+        stack.forEach(s -> System.out.println(s.value + " "));
     }
 
     public void beforeSort(Tree tree) {
@@ -62,6 +85,8 @@ public class TwoTree {
         beforeSort(tree.left);
         beforeSort(tree.right);
     }
+
+
 
 
 
@@ -100,14 +125,16 @@ public class TwoTree {
         twoTree.insert(8);
         twoTree.insert(1);
         twoTree.insert(6);
-        System.out.println(twoTree);
-        twoTree.beforeSort(twoTree.root);
-        System.out.println();
-        twoTree.centerSort(twoTree.root);
-        System.out.println();
-        twoTree.afterSort(twoTree.root);
-        System.out.println();
+//        System.out.println(twoTree);
+//        twoTree.beforeSort(twoTree.root);
+//        System.out.println();
+//        twoTree.centerSort(twoTree.root);
+//        System.out.println();
+//        twoTree.afterSort(twoTree.root);
+//        System.out.println();
         twoTree.rankSort(twoTree.root);
+        //twoTree.reversSort(twoTree.root);
+
     }
 }
 
