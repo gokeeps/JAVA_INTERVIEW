@@ -40,6 +40,19 @@ public class TwoTree {
         }
     }
 
+    public void rankSort(Tree tree){
+        if (tree == null) {
+            return;
+        }
+        if (tree.left != null) {
+            System.out.print(tree.left.value + " ");
+        }
+        if (tree.right != null) {
+            System.out.print(tree.right.value + " ");
+        }
+        rankSort(tree.left);
+        rankSort(tree.right);
+    }
 
     public void beforeSort(Tree tree) {
         if (tree == null) {
@@ -49,6 +62,8 @@ public class TwoTree {
         beforeSort(tree.left);
         beforeSort(tree.right);
     }
+
+
 
 
     public void centerSort(Tree tree) {
@@ -91,6 +106,8 @@ public class TwoTree {
         twoTree.centerSort(twoTree.root);
         System.out.println();
         twoTree.afterSort(twoTree.root);
+        System.out.println();
+        twoTree.rankSort(twoTree.root);
     }
 }
 
