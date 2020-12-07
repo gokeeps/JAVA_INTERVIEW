@@ -15,5 +15,4 @@ alter table user change name name varchar(64) not null default '么么哒' comme
 alter table user drop column sex;
 
 
-
 select dense_rank() over(age) from user;

@@ -86,11 +86,6 @@ public class TwoTree {
         beforeSort(tree.right);
     }
 
-
-
-
-
-
     public void centerSort(Tree tree) {
         if (tree == null) {
             return;
